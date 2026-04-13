@@ -589,9 +589,9 @@ class CompressVideoApp:
         self.file_label.config(text=f"Selected: {os.path.basename(file_path)}")
 
         # Get video info
-        self.get_video_info(file_path)
+        self.get_video_info(file_path, size)
 
-    def get_video_info(self, file_path):
+    def get_video_info(self, file_path, file_size):
         """Get video metadata using FFmpeg"""
         if not self.ffmpeg_path:
             return
@@ -644,7 +644,7 @@ class CompressVideoApp:
             self.video_info = {
                 'path': file_path,
                 'name': os.path.basename(file_path),
-                'size': size,
+                'size': file_size,
                 'duration': duration,
                 'width': width,
                 'height': height,
