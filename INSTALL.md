@@ -53,14 +53,14 @@ Complete step-by-step installation instructions for CompressVideo on all platfor
 1. **Download the App**:
    ```bash
    # Using Git (if installed)
-   git clone https://github.com/yourusername/compressvideo.git
+   git clone https://github.com/Aniket886/Video-Compressor.git
    
    # Or download ZIP from GitHub and extract
    ```
 
 2. **Navigate to the folder**:
    ```bash
-   cd compressvideo
+   cd Video-Compressor
    ```
 
 3. **Run the application**:
@@ -80,8 +80,8 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco install ffmpeg
 
 # Download and run CompressVideo
-git clone https://github.com/yourusername/compressvideo.git
-cd compressvideo
+git clone https://github.com/Aniket886/Video-Compressor.git
+cd Video-Compressor
 run.bat
 ```
 
@@ -96,8 +96,8 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 scoop install ffmpeg
 
 # Download and run CompressVideo
-git clone https://github.com/yourusername/compressvideo.git
-cd compressvideo
+git clone https://github.com/Aniket886/Video-Compressor.git
+cd Video-Compressor
 run.bat
 ```
 
@@ -123,8 +123,8 @@ brew install ffmpeg
 
 ```bash
 # Download the app
-git clone https://github.com/yourusername/compressvideo.git
-cd compressvideo
+git clone https://github.com/Aniket886/Video-Compressor.git
+cd Video-Compressor
 
 # Make run script executable
 chmod +x run.sh
@@ -142,8 +142,8 @@ chmod +x run.sh
 sudo port install ffmpeg
 
 # Download and run CompressVideo
-git clone https://github.com/yourusername/compressvideo.git
-cd compressvideo
+git clone https://github.com/Aniket886/Video-Compressor.git
+cd Video-Compressor
 chmod +x run.sh
 ./run.sh
 ```
@@ -157,8 +157,8 @@ chmod +x run.sh
 
 2. **Download CompressVideo**:
    ```bash
-   git clone https://github.com/yourusername/compressvideo.git
-   cd compressvideo
+   git clone https://github.com/Aniket886/Video-Compressor.git
+   cd Video-Compressor
    python3 main.py
    ```
 
@@ -195,8 +195,8 @@ sudo apt install python3 python3-tk
 
 ```bash
 # Download the app
-git clone https://github.com/yourusername/compressvideo.git
-cd compressvideo
+git clone https://github.com/Aniket886/Video-Compressor.git
+cd Video-Compressor
 
 # Run
 chmod +x run.sh
@@ -213,8 +213,8 @@ sudo dnf install ffmpeg
 sudo dnf install python3 python3-tkinter
 
 # Download and run
-git clone https://github.com/yourusername/compressvideo.git
-cd compressvideo
+git clone https://github.com/Aniket886/Video-Compressor.git
+cd Video-Compressor
 chmod +x run.sh
 ./run.sh
 ```
@@ -229,8 +229,8 @@ sudo pacman -S ffmpeg
 sudo pacman -S python tk
 
 # Download and run
-git clone https://github.com/yourusername/compressvideo.git
-cd compressvideo
+git clone https://github.com/Aniket886/Video-Compressor.git
+cd Video-Compressor
 chmod +x run.sh
 ./run.sh
 ```
@@ -316,7 +316,7 @@ python -c "import tkinter; print(tkinter.Tcl().eval('info version'))"
 
 ```bash
 # Navigate to app folder
-cd compressvideo
+cd Video-Compressor
 
 # Run
 python main.py
@@ -469,17 +469,17 @@ If you're still having trouble:
 
 **Windows (with Chocolatey)**:
 ```powershell
-choco install ffmpeg; git clone https://github.com/yourusername/compressvideo.git; cd compressvideo; run.bat
+choco install ffmpeg; git clone https://github.com/Aniket886/Video-Compressor.git; cd Video-Compressor; run.bat
 ```
 
 **macOS (with Homebrew)**:
 ```bash
-brew install ffmpeg && git clone https://github.com/yourusername/compressvideo.git && cd compressvideo && chmod +x run.sh && ./run.sh
+brew install ffmpeg && git clone https://github.com/Aniket886/Video-Compressor.git && cd Video-Compressor && chmod +x run.sh && ./run.sh
 ```
 
 **Ubuntu**:
 ```bash
-sudo apt update && sudo apt install ffmpeg python3 python3-tk -y && git clone https://github.com/yourusername/compressvideo.git && cd compressvideo && chmod +x run.sh && ./run.sh
+sudo apt update && sudo apt install ffmpeg python3 python3-tk -y && git clone https://github.com/Aniket886/Video-Compressor.git && cd Video-Compressor && chmod +x run.sh && ./run.sh
 ```
 
 ---

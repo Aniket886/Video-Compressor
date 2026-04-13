@@ -87,5 +87,5 @@ Each version includes:
 
 For help with specific versions:
 - Check the [README](README.md)
-- Visit [GitHub Issues](https://github.com/yourusername/compressvideo/issues)
+- Visit [GitHub Issues](https://github.com/Aniket886/Video-Compressor/issues)
 - See [Troubleshooting Guide](INSTALL.md#troubleshooting)

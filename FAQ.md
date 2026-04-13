@@ -248,8 +248,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. We welcome:
 ## Still Have Questions?
 
 - **Check the docs**: [README.md](README.md) | [INSTALL.md](INSTALL.md) | [CONTRIBUTING.md](CONTRIBUTING.md)
-- **Open an issue**: [GitHub Issues](https://github.com/yourusername/compressvideo/issues)
-- **Join discussions**: [GitHub Discussions](https://github.com/yourusername/compressvideo/discussions)
+- **Open an issue**: [GitHub Issues](https://github.com/Aniket886/Video-Compressor/issues)
+- **Join discussions**: [Repository home](https://github.com/Aniket886/Video-Compressor)
 
 ---
 

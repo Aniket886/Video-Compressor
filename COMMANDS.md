@@ -15,7 +15,7 @@ python3 main.py
 ## File Structure
 
 ```
-compressvideo/
+Video-Compressor/
 ├── main.py          # Main application
 ├── run.bat          # Windows launcher script
 ├── run.sh           # Unix launcher script

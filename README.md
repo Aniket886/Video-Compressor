@@ -106,8 +106,8 @@ ffmpeg -version
 ### 2 — Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/compressvideo.git
-cd compressvideo
+git clone https://github.com/Aniket886/Video-Compressor.git
+cd Video-Compressor
 ```
 
 > **No extra dependencies!** The app only uses Python's standard library (`tkinter`, `subprocess`, `threading`, `pathlib`, etc.).
@@ -352,7 +352,7 @@ original_name_compressed_YYYYMMDD_HHMMSS.mp4
 </details>
 
 > [!NOTE]
-> For issues not listed here, run `python main.py` directly in your terminal to capture the full error output, then open a [GitHub Issue](https://github.com/yourusername/compressvideo/issues) with: OS version, `python --version`, `ffmpeg -version`, and the full error text.
+> For issues not listed here, run `python main.py` directly in your terminal to capture the full error output, then open a [GitHub Issue](https://github.com/Aniket886/Video-Compressor/issues) with: OS version, `python --version`, `ffmpeg -version`, and the full error text.
 
 ---
 
@@ -373,7 +373,7 @@ Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for full guide
 **Quick workflow:**
 ```bash
 # 1. Fork & clone
-git clone https://github.com/YOUR_USERNAME/compressvideo.git
+git clone https://github.com/YOUR_USERNAME/Video-Compressor.git
 
 # 2. Create your feature branch
 git checkout -b feature/amazing-feature
@@ -386,8 +386,8 @@ git push origin feature/amazing-feature
 ```
 
 **Ways to help:**
-- 🐛 [Report bugs](https://github.com/yourusername/compressvideo/issues/new?labels=bug)
-- 💡 [Request features](https://github.com/yourusername/compressvideo/issues/new?labels=feature+request)
+- 🐛 [Report bugs](https://github.com/Aniket886/Video-Compressor/issues/new?labels=bug)
+- 💡 [Request features](https://github.com/Aniket886/Video-Compressor/issues/new?labels=feature+request)
 - 📝 Improve documentation
 - 🧪 Write tests
 

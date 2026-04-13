@@ -32,8 +32,8 @@ This project and everyone participating in it is governed by our commitment to:
 2. Click the "Fork" button (top right)
 3. Clone your fork locally:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/compressvideo.git
-   cd compressvideo
+   git clone https://github.com/YOUR_USERNAME/Video-Compressor.git
+   cd Video-Compressor
    ```
 
 ## How Can I Contribute?
@@ -108,7 +108,7 @@ Look for issues labeled:
 ### Project Structure
 
 ```
-compressvideo/
+Video-Compressor/
 ├── main.py              # Main application
 ├── run.bat              # Windows launcher
 ├── run.sh               # Unix launcher
@@ -226,7 +226,7 @@ Closes #67
 
 1. **Update your fork**:
    ```bash
-   git remote add upstream https://github.com/original/compressvideo.git
+   git remote add upstream https://github.com/Aniket886/Video-Compressor.git
    git fetch upstream
    git rebase upstream/main
    ```
