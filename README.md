@@ -369,6 +369,7 @@ original_name_compressed_YYYYMMDD_HHMMSS.mp4
 ## 🤝 Contributing
 
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
+Minor documentation maintenance updates are occasionally merged to keep contribution metadata current.
 
 **Quick workflow:**
 ```bash
