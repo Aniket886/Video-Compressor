@@ -47,6 +47,16 @@ class CompressVideoApp:
         self.video_info = None
         self.compression_running = False
         self.cancelled = False
+        self.size_options = [
+            ("50 MB", "50"),
+            ("100 MB", "100"),
+            ("250 MB", "250"),
+            ("500 MB", "500"),
+            ("1 GB", "1000"),
+            ("2 GB", "2000"),
+            ("5 GB", "5000"),
+            ("Custom", "custom"),
+        ]
 
         # FFmpeg path
         self.ffmpeg_path = self.find_ffmpeg()
@@ -153,8 +163,9 @@ class CompressVideoApp:
             lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all"))
         )
 
-        self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw", width=760)
+        self.canvas_window = self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
         self.canvas.configure(yscrollcommand=scrollbar.set)
+        self.canvas.bind("<Configure>", self.on_canvas_configure)
 
         # Bind mouse wheel
         self.canvas.bind_all("<MouseWheel>", self.on_mousewheel)
@@ -172,6 +183,10 @@ class CompressVideoApp:
     def on_mousewheel(self, event):
         """Handle mouse wheel scrolling"""
         self.canvas.yview_scroll(int(-1*(event.delta/120)), "units")
+
+    def on_canvas_configure(self, event):
+        """Keep cards sized to the visible canvas width"""
+        self.canvas.itemconfigure(self.canvas_window, width=max(event.width - 4, 600))
 
     def create_card(self, parent, title=None):
         """Create a card container"""
@@ -191,6 +206,7 @@ class CompressVideoApp:
                                   bg=COLORS['bg_card'])
             title_label.pack(anchor=tk.W, pady=(0, 15))
 
+        inner.card_container = card
         return inner
 
     def create_upload_section(self):
@@ -245,7 +261,7 @@ class CompressVideoApp:
     def create_info_section(self):
         """Create video info section"""
         self.info_frame = self.create_card(self.scrollable_frame, "Video Information")
-        self.info_frame.pack_forget()  # Hide initially
+        self.info_frame.card_container.pack_forget()  # Hide initially
 
         # Info grid
         info_grid = tk.Frame(self.info_frame, bg=COLORS['bg_card'])
@@ -285,7 +301,7 @@ class CompressVideoApp:
     def create_settings_section(self):
         """Create compression settings section"""
         self.settings_frame = self.create_card(self.scrollable_frame, "Compression Settings")
-        self.settings_frame.pack_forget()  # Hide initially
+        self.settings_frame.card_container.pack_forget()  # Hide initially
 
         # Recommendations
         rec_label = tk.Label(self.settings_frame, text="Recommended sizes for this video:",
@@ -309,10 +325,10 @@ class CompressVideoApp:
         size_label.pack(anchor=tk.W)
 
         self.size_var = tk.StringVar(value="100")
-        size_options = ["50", "100", "250", "500", "1000", "2000", "5000", "custom"]
-        size_names = ["50 MB", "100 MB", "250 MB", "500 MB", "1 GB", "2 GB", "5 GB", "Custom"]
+        self.size_display_var = tk.StringVar(value=self.get_size_label("100"))
+        size_names = [label for label, _ in self.size_options]
 
-        self.size_menu = ttk.Combobox(size_frame, textvariable=self.size_var,
+        self.size_menu = ttk.Combobox(size_frame, textvariable=self.size_display_var,
                                       values=size_names, state="readonly", width=20)
         self.size_menu.pack(fill=tk.X, pady=(5, 0))
         self.size_menu.current(1)
@@ -400,7 +416,7 @@ class CompressVideoApp:
     def create_progress_section(self):
         """Create progress section"""
         self.progress_frame = self.create_card(self.scrollable_frame, "Compressing Video...")
-        self.progress_frame.pack_forget()  # Hide initially
+        self.progress_frame.card_container.pack_forget()  # Hide initially
 
         # Progress percentage
         self.progress_percent = tk.Label(self.progress_frame, text="0%",
@@ -435,7 +451,7 @@ class CompressVideoApp:
     def create_result_section(self):
         """Create results section (called after compression)"""
         if hasattr(self, 'result_frame'):
-            self.result_frame.destroy()
+            self.result_frame.card_container.destroy()
 
         self.result_frame = self.create_card(self.scrollable_frame, "Compression Complete!")
 
@@ -521,6 +537,21 @@ class CompressVideoApp:
         # Scroll to result
         self.result_frame.update_idletasks()
         self.canvas.yview_moveto(1.0)
+
+    def get_size_label(self, value):
+        """Map an internal size value to the visible combobox label"""
+        for label, option_value in self.size_options:
+            if option_value == value:
+                return label
+        return self.size_options[1][0]
+
+    def get_selected_size_value(self):
+        """Map the visible combobox label back to the internal size value"""
+        selected_label = self.size_display_var.get()
+        for label, option_value in self.size_options:
+            if label == selected_label:
+                return option_value
+        return self.size_var.get()
 
     def find_ffmpeg(self):
         """Find FFmpeg executable"""
@@ -669,11 +700,11 @@ class CompressVideoApp:
         self.info_labels['format'].config(text=self.video_info['format'])
         self.info_labels['resolution'].config(text=f"{self.video_info['width']}x{self.video_info['height']}")
 
-        self.info_frame.master.pack(fill=tk.X, pady=(0, 15), padx=5)
+        self.info_frame.card_container.pack(fill=tk.X, pady=(0, 15), padx=5)
 
     def show_settings(self):
         """Show settings section"""
-        self.settings_frame.master.pack(fill=tk.X, pady=(0, 15), padx=5)
+        self.settings_frame.card_container.pack(fill=tk.X, pady=(0, 15), padx=5)
         self.scrollable_frame.update_idletasks()
         self.canvas.yview_moveto(1.0)
 
@@ -753,11 +784,14 @@ class CompressVideoApp:
     def set_custom_size(self, size_mb):
         """Set custom size from recommendation"""
         self.size_var.set("custom")
+        self.size_display_var.set(self.get_size_label("custom"))
         self.custom_size_var.set(str(size_mb))
         self.on_size_change(None)
 
     def on_size_change(self, event):
         """Handle size selection change"""
+        self.size_var.set(self.get_selected_size_value())
+
         if self.size_var.get() == "custom":
             self.custom_frame.pack(fill=tk.X, pady=(10, 0), before=self.warning_label)
         else:
@@ -830,8 +864,8 @@ class CompressVideoApp:
         self.output_path = os.path.join(output_dir, f"{base_name}_compressed_{timestamp}.{output_format}")
 
         # Show progress
-        self.settings_frame.master.pack_forget()
-        self.progress_frame.master.pack(fill=tk.X, pady=(0, 15), padx=5)
+        self.settings_frame.card_container.pack_forget()
+        self.progress_frame.card_container.pack(fill=tk.X, pady=(0, 15), padx=5)
         self.compression_running = True
         self.cancelled = False
 
@@ -931,7 +965,7 @@ class CompressVideoApp:
         savings = (1 - output_size / self.video_info['size']) * 100
 
         self.root.after(0, lambda: [
-            self.progress_frame.master.pack_forget(),
+            self.progress_frame.card_container.pack_forget(),
             self.create_result_section(),
             self.compressed_size_label.config(text=self.format_size(output_size)),
             self.savings_label.config(text=f"🎉 {savings:.1f}% size reduction!"),
@@ -942,8 +976,8 @@ class CompressVideoApp:
         """Handle compression failure"""
         self.compression_running = False
         self.root.after(0, lambda: [
-            self.progress_frame.master.pack_forget(),
-            self.settings_frame.master.pack(fill=tk.X, pady=(0, 15), padx=5),
+            self.progress_frame.card_container.pack_forget(),
+            self.settings_frame.card_container.pack(fill=tk.X, pady=(0, 15), padx=5),
             messagebox.showerror("Compression Failed", f"Error: {error}")
         ])
 
@@ -963,18 +997,19 @@ class CompressVideoApp:
         """Reset for new video"""
         # Hide result
         if hasattr(self, 'result_frame'):
-            self.result_frame.destroy()
+            self.result_frame.card_container.destroy()
             delattr(self, 'result_frame')
 
         # Hide settings and info
-        self.settings_frame.master.pack_forget()
-        self.info_frame.master.pack_forget()
+        self.settings_frame.card_container.pack_forget()
+        self.info_frame.card_container.pack_forget()
 
         # Reset variables
         self.current_file = None
         self.video_info = None
         self.file_label.config(text="")
         self.size_var.set("100")
+        self.size_display_var.set(self.get_size_label("100"))
         self.custom_size_var.set("")
         self.warning_label.config(text="")
 
