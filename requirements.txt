@@ -1,0 +1,15 @@
+# CompressVideo Desktop App Requirements
+# Python 3.7+
+
+# Standard library modules used:
+# - tkinter (included with Python)
+# - subprocess
+# - os
+# - sys
+# - threading
+# - json
+# - pathlib
+# - datetime
+
+# No external dependencies required!
+# Just need FFmpeg installed on system
