@@ -45,6 +45,8 @@ Before creating a bug report, please:
 2. Try to reproduce with the latest version
 3. Collect relevant information
 
+If you are not sure whether the problem is a bug yet, start with a question in GitHub Discussions first.
+
 When creating a bug report, include:
 - **Title**: Clear and descriptive
 - **Environment**: OS, Python version, FFmpeg version

@@ -233,7 +233,7 @@ Yes! Support for NVIDIA NVENC and Intel QuickSync is planned.
 
 ### Can I request features?
 
-Absolutely! Open an issue on GitHub with the "feature request" label.
+Yes. Open an issue on GitHub with the "feature request" label.
 
 ### How can I contribute?
 
@@ -248,8 +248,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. We welcome:
 ## Still Have Questions?
 
 - **Check the docs**: [README.md](README.md) | [INSTALL.md](INSTALL.md) | [CONTRIBUTING.md](CONTRIBUTING.md)
-- **Open an issue**: [GitHub Issues](https://github.com/Aniket886/Video-Compressor/issues)
-- **Join discussions**: [Repository home](https://github.com/Aniket886/Video-Compressor)
+- **Ask a question**: [GitHub Discussions](https://github.com/Aniket886/Video-Compressor/discussions)
+- **Report a bug**: [GitHub Issues](https://github.com/Aniket886/Video-Compressor/issues)
 
 ---
 

@@ -371,6 +371,11 @@ original_name_compressed_YYYYMMDD_HHMMSS.mp4
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
 Minor documentation maintenance updates are occasionally merged to keep contribution metadata current.
 
+## ðŸ’¬ Support
+
+- Use [GitHub Discussions](https://github.com/Aniket886/Video-Compressor/discussions) for setup help, usage questions, and troubleshooting.
+- Use [GitHub Issues](https://github.com/Aniket886/Video-Compressor/issues) for confirmed bugs and concrete feature requests.
+
 **Quick workflow:**
 ```bash
 # 1. Fork & clone

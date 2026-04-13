@@ -1,0 +1,70 @@
+title: "[Q&A] "
+labels:
+  - support
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask setup, usage, or troubleshooting questions about CompressVideo here.
+
+        For faster answers, include the exact command you ran, the operating system, and any FFmpeg or Python version details.
+  - type: dropdown
+    id: topic
+    attributes:
+      label: What do you need help with?
+      description: Pick the area that best matches your question.
+      options:
+        - Installation or first run
+        - FFmpeg setup
+        - Compression quality or file size
+        - Output format compatibility
+        - Performance or speed
+        - Errors or crashes
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: operating-system
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: python-version
+    attributes:
+      label: Python version
+      description: Example: Python 3.11.8
+      placeholder: Python 3.x.x
+  - type: input
+    id: ffmpeg-version
+    attributes:
+      label: FFmpeg version
+      description: Example: ffmpeg version 6.1.1
+      placeholder: ffmpeg version x.x.x
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Describe what you are trying to do and what is blocking you.
+      placeholder: I can launch the app, but compression fails when I target a smaller MP4 output.
+    validations:
+      required: true
+  - type: textarea
+    id: error-output
+    attributes:
+      label: Error output or screenshots
+      description: Paste the relevant terminal error, traceback, or screenshots if available.
+      render: shell
+  - type: checkboxes
+    attributes:
+      label: Before posting
+      options:
+        - label: I checked the README, INSTALL guide, and FAQ first.
+          required: true
+        - label: I included enough details for someone else to reproduce the issue.
+          required: true
